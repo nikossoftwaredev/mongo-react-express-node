@@ -11,3 +11,18 @@ export const setActiveHeader = value => {
     value,
   };
 };
+
+export const API_POST = (path, data) => {
+  return {
+    type: 'POST',
+    path,
+    data,
+  };
+};
+
+export const API_GET = path => {
+  return {
+    type: 'GET',
+    path,
+  };
+};

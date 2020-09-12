@@ -7,10 +7,12 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import LockIcon from '@material-ui/icons/Lock';
 import { StyledButton } from '../styles/GenericStyled';
-import axios from 'axios';
+import { API_POST, API_GET } from '../actions';
+import { useDispatch } from 'react-redux';
 
 const LoginPage = () => {
   const [data, setData] = useState({ name: '', mail: '', password: '' });
+  const dispatch = useDispatch();
 
   const onChange = e => {
     const tmpData = { [e.target.name]: e.target.value };
@@ -56,18 +58,7 @@ const LoginPage = () => {
             variant='outlined'
           />
 
-          <StyledButton
-            onClick={e => {
-              axios
-                .post('/login', data)
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-            }}
-          >
+          <StyledButton onClick={() => dispatch(API_GET('/users'))}>
             Login
           </StyledButton>
         </VerticalItems>
