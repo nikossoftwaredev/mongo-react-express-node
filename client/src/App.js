@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
-import { Text, StyledLink, HorizontalItems } from './styles/GenericStyled';
+import { StyledLink, HorizontalItems } from './styles/GenericStyled';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -57,8 +57,9 @@ const App = () => {
             <OurModal
               open={openLogin}
               setOpen={setOpenLogin}
-              width={500}
-              height={500}
+              width='50%'
+              height='50%'
+              minWidth='200px'
             >
               <LoginPage />
             </OurModal>
@@ -71,8 +72,9 @@ const App = () => {
             <OurModal
               open={openRegister}
               setOpen={setOpenRegister}
-              width={500}
-              height={500}
+              width='50%'
+              height='50%'
+              minWidth='200px'
             >
               <RegisterPage />
             </OurModal>

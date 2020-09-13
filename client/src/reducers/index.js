@@ -1,6 +1,6 @@
 import ui from './ui';
 import api from './api';
-import { combinedReducers, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({ ui, api });
 
