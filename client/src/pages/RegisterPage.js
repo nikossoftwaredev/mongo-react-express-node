@@ -7,10 +7,12 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import LockIcon from '@material-ui/icons/Lock';
 import { StyledButton } from '../styles/GenericStyled';
-import axios from 'axios';
+import { API_POST } from '../actions';
+import { useDispatch } from 'react-redux';
 
 const RegisterPage = () => {
-  const [data, setData] = useState({ name: '', mail: '', password: '' });
+  const [data, setData] = useState({ username: '', mail: '', password: '' });
+  const dispatch = useDispatch();
 
   const onChange = e => {
     const tmpData = { [e.target.name]: e.target.value };
@@ -27,8 +29,8 @@ const RegisterPage = () => {
           />
           <Text align='center'>Register</Text>
           <TextField
-            value={data.name}
-            name='name'
+            value={data.username}
+            name='username'
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
@@ -70,18 +72,7 @@ const RegisterPage = () => {
             variant='outlined'
           />
 
-          <StyledButton
-            onClick={e => {
-              axios
-                .post('/register', data)
-                .then(function (response) {
-                  console.log(response);
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
-            }}
-          >
+          <StyledButton onClick={() => dispatch(API_POST('/register', data))}>
             Register
           </StyledButton>
         </VerticalItems>

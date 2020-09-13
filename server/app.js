@@ -17,7 +17,7 @@ const app = express();
 
 //Services
 require('dotenv').config();
-require('./services/passport')(app); //Passing the app into our exported function from passport
+require('./services/passport')(app); //Initialize passport using app as an argument
 connectToMongo();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -10,15 +10,13 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-  //Must use passport
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS);
     const user = { ...req.body, password: { bcrypt: hashedPassword } };
 
-    console.log(user);
     User.create(user, err => {
       if (err) return next(err);
-      res.redirect('/login');
+      res.status(300).send(user);
     });
   } catch {
     res.redirect('/register');

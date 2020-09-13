@@ -1,22 +1,25 @@
 import axios from 'axios';
 
-const apiReducer = (state = false, action) => {
+const apiReducer = (state = {}, action) => {
+  const trimmedPath = action.path && action.path.replace(/[^a-zA-Z ]/g, '');
+  let newState = { ...state, [trimmedPath]: 'fetching' };
   switch (action.type) {
     case 'POST':
       axios
         .post(action.path, action.data)
-        .then(function (response) {
+        .then(response => {
           console.log(response);
         })
         .catch(function (error) {
           console.log(error);
         });
-      return state;
+      return { ...state, login: 'done' };
     case 'GET':
       axios
         .get(action.path)
         .then(response => {
           // handle success
+          newState = { ...newState, [action.path]: 'done' };
           console.log(response);
         })
         .catch(error => {
@@ -26,7 +29,7 @@ const apiReducer = (state = false, action) => {
         .then(() => {
           // always executed
         });
-      return state;
+      return newState;
     case 'PUT':
       return true;
     case 'DELETE':

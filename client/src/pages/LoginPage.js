@@ -7,11 +7,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import LockIcon from '@material-ui/icons/Lock';
 import { StyledButton } from '../styles/GenericStyled';
-import { API_POST, API_GET } from '../actions';
+import { API_POST } from '../actions';
 import { useDispatch } from 'react-redux';
 
 const LoginPage = () => {
-  const [data, setData] = useState({ name: '', mail: '', password: '' });
+  const [data, setData] = useState({ username: '', password: '' });
   const dispatch = useDispatch();
 
   const onChange = e => {
@@ -29,17 +29,17 @@ const LoginPage = () => {
           />
           <Text align='center'>Login</Text>
           <TextField
-            value={data.mail}
-            name='mail'
+            value={data.username}
+            name='username'
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <AlternateEmailIcon />
+                  <AccountCircle />
                 </InputAdornment>
               ),
             }}
             id='outlined-basic'
-            label='Email'
+            label='Name'
             variant='outlined'
           />
           <TextField
