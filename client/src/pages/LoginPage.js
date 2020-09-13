@@ -58,7 +58,7 @@ const LoginPage = () => {
             variant='outlined'
           />
 
-          <StyledButton onClick={() => dispatch(API_GET('/users'))}>
+          <StyledButton onClick={() => dispatch(API_POST('/login', data))}>
             Login
           </StyledButton>
         </VerticalItems>

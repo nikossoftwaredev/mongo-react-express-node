@@ -3,7 +3,6 @@ import axios from 'axios';
 const apiReducer = (state = false, action) => {
   switch (action.type) {
     case 'POST':
-      console.log('TZrying to post vka redux');
       axios
         .post(action.path, action.data)
         .then(function (response) {

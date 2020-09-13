@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 
 export const StyledLink = styled(Link)`
   font-family: 'Dunkin';
+  text-decoration: none;
 `;
 
 export const HorizontalItems = styled.div`
