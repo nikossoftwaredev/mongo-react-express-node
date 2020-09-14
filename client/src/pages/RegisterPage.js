@@ -10,7 +10,7 @@ import { StyledButton } from '../styles/GenericStyled';
 import { API_POST } from '../actions';
 import { useDispatch } from 'react-redux';
 
-const RegisterPage = () => {
+const RegisterPage = ({ setOpen }) => {
   const [data, setData] = useState({ username: '', mail: '', password: '' });
   const dispatch = useDispatch();
 
@@ -72,7 +72,12 @@ const RegisterPage = () => {
             variant='outlined'
           />
 
-          <StyledButton onClick={() => dispatch(API_POST('/register', data))}>
+          <StyledButton
+            onClick={() => {
+              dispatch(API_POST('/register', data));
+              setOpen(false);
+            }}
+          >
             Register
           </StyledButton>
         </VerticalItems>

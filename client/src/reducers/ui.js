@@ -7,7 +7,7 @@ const uiReducer = (state = {}, action) => {
     case 'DEC':
       return {};
     case 'LOG_IN':
-      return { ...state, isLogged: !state.isLogged };
+      return { ...state, isLogged: action.value };
     default:
       return state;
   }

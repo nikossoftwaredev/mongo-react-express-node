@@ -6,10 +6,10 @@ import TextField from '@material-ui/core/TextField';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import { StyledButton } from '../styles/GenericStyled';
-import { API_POST } from '../actions';
+import { API_POST, setIsLogged } from '../actions';
 import { useDispatch } from 'react-redux';
 
-const LoginPage = () => {
+const LoginPage = ({ setOpen }) => {
   const [data, setData] = useState({ username: '', password: '' });
   const dispatch = useDispatch();
 
@@ -37,7 +37,6 @@ const LoginPage = () => {
                 </InputAdornment>
               ),
             }}
-            id='outlined-basic'
             label='Name'
             variant='outlined'
           />
@@ -51,13 +50,18 @@ const LoginPage = () => {
                 </InputAdornment>
               ),
             }}
-            id='outlined-basic'
             type='password'
             label='Password'
             variant='outlined'
           />
 
-          <StyledButton onClick={() => dispatch(API_POST('/login', data))}>
+          <StyledButton
+            onClick={() => {
+              dispatch(setIsLogged(true));
+              dispatch(API_POST('/login', data));
+              setOpen(false);
+            }}
+          >
             Login
           </StyledButton>
         </VerticalItems>
